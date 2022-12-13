@@ -15,8 +15,12 @@ function App() {
     }
   }
   useEffect(() => {
-    if (localStorage.getItem('theme') === null) {
+    const theme = localStorage.getItem('theme')
+    if (theme === null) {
       setTheme('light')
+    } else {
+      setTheme(theme)
+      document.documentElement.classList.add(theme)
     }
     window.addEventListener('storage', handleStorageChange)
     return () => {
