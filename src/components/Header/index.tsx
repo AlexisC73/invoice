@@ -5,7 +5,7 @@ import { ThemeCtx } from '../../context/ThemeCtx'
 export default function Header() {
   const { theme, toggleTheme } = useContext(ThemeCtx)
   return (
-    <div className='h-header bg-[#1E2139] flex lg:flex-col lg:flex-1 lg:w-[101px] lg:rounded-tr-[30px] lg:overflow-hidden'>
+    <div className='h-headerMobile bg-[#1E2139] flex lg:flex-col lg:flex-1 lg:w-headerDesktop lg:rounded-tr-[30px] lg:overflow-hidden'>
       <div className='text-7xl lg:text-[101px]'>
         <MobileHeaderIcon />
       </div>
@@ -13,13 +13,13 @@ export default function Header() {
       <div className='flex lg:flex-col flex-1 justify-end items-center'>
         <div
           onClick={toggleTheme}
-          className='max-lg:mr-5 lg:mb-5 cursor-pointer'
+          className='max-lg:mr-5 text-xl lg:mb-5 cursor-pointer'
         >
-          {theme !== 'dark' ? <LuneIcon size={20} /> : <SunIcon size={20} />}
+          {theme !== 'dark' ? <LuneIcon /> : <SunIcon />}
         </div>
-        <div className='w-px lg:w-full lg:h-px bg-[#494E6E] h-header'></div>
+        <div className='w-px h-full lg:w-full lg:h-px bg-[#494E6E]'></div>
       </div>
-      <div className='flex h-header w-header lg:h-[101px] lg:w-[101px] items-center justify-center'>
+      <div className='flex h-headerMobile w-headerMobile lg:h-headerDesktop lg:w-headerDesktop items-center justify-center'>
         <div className='h-8 w-8 lg:h-10 lg:w-10 overflow-hidden rounded-full'>
           <img
             alt='profile'

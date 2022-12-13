@@ -4,10 +4,12 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        header: 72 / 16 + 'rem',
+        headerMobile: 72 / 16 + 'rem',
+        headerDesktop: 101 / 16 + 'rem',
       },
       width: {
-        header: 72 / 16 + 'rem',
+        headerMobile: 72 / 16 + 'rem',
+        headerDesktop: 101 / 16 + 'rem',
       },
       colors: {
         purple: {

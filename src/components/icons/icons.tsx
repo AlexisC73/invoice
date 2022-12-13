@@ -1,7 +1,7 @@
 export const MobileHeaderIcon = () => (
   <svg
     width='1em'
-    height='rem'
+    height='1em'
     viewBox='0 0 72 72'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
@@ -38,10 +38,10 @@ export const MobileHeaderIcon = () => (
   </svg>
 )
 
-export const LuneIcon = ({ size }: { size: number }) => (
+export const LuneIcon = () => (
   <svg
-    width={size + 'px'}
-    height={size + 'px'}
+    width='1em'
+    height='1em'
     viewBox='0 0 20 20'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
@@ -53,10 +53,10 @@ export const LuneIcon = ({ size }: { size: number }) => (
   </svg>
 )
 
-export const SunIcon = ({ size }: { size: number }) => (
+export const SunIcon = () => (
   <svg
-    width={size + 'px'}
-    height={size + 'px'}
+    width='1em'
+    height='1em'
     viewBox='0 0 20 20'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
