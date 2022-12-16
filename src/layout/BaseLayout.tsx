@@ -10,7 +10,7 @@ export default function BaseLayout({
       <div className='flex flex-col'>
         <Header />
       </div>
-      <div className='flex-1'>{children}</div>
+      <div className='flex-1 flex flex-col'>{children}</div>
     </div>
   )
 }
