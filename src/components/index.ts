@@ -7,3 +7,5 @@ export { default as PaymentStatus } from './PaymentStatus'
 export { default as CustomButton } from './CustomButton'
 export { default as GoBackButton } from './GoBack'
 export { default as InvoiceHeaderBar } from './InvoiceHeaderBar'
+
+export { default as InvoiceDetails } from './InvoiceDetails'

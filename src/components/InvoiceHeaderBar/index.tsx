@@ -4,7 +4,7 @@ import PaymentStatus from '../PaymentStatus'
 export default function InvoiceHeaderBar({ invoice }: { invoice: Invoice }) {
   return (
     <>
-      <div className='h-20 w-full bg-white rounded-lg flex items-center px-8 mt-8 justify-between dark:bg-[#1E2139]'>
+      <div className='h-20 w-full bg-white rounded-lg flex items-center px-8 justify-between dark:bg-[#1E2139]'>
         <div className='flex items-center gap-4 max-sm:flex-1 max-sm:justify-between'>
           <p className='text-[#858BB2] dark:text-[#DFE3FA] text-sm'>Status</p>
           <PaymentStatus status={invoice.status} />

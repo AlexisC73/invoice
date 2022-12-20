@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import data from '../../data/invoices.json'
 import BaseLayout from '../../layout/BaseLayout'
 import ArrowLeft from '../../components/icons/arrow-left'
-import { InvoiceHeaderBar } from '../../components'
+import { InvoiceDetails, InvoiceHeaderBar } from '../../components'
 import GoBack from '../../components/GoBack'
 
 export default function Invoice() {
@@ -14,7 +14,13 @@ export default function Invoice() {
       <BaseLayout>
         <div className='lg:max-w-[730px] w-full max-lg:px-5 mx-auto mt-10 flex flex-col max-sm:pb-20'>
           <GoBack />
-          <InvoiceHeaderBar invoice={invoice} />
+          <div className='shadow-md mt-8 rounded-lg'>
+            <InvoiceHeaderBar invoice={invoice} />
+          </div>
+
+          <div className='mt-6 rounded-lg'>
+            <InvoiceDetails invoice={invoice} />
+          </div>
         </div>
       </BaseLayout>
     )

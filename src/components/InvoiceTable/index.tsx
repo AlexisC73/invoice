@@ -16,7 +16,7 @@ export default function InvoiceTable({ invoices }: InvoiceTableProps) {
     )
   } else {
     return (
-      <div>
+      <div className='flex flex-1 flex-col items-center justify-center'>
         <IllustrationEmpty />
         <p className='text-[#0C0E16] dark:text-white text-xl text-center mt-6'>
           There is nothing here
