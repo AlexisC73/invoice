@@ -1,3 +1,4 @@
+import { InvoiceElement } from '..'
 import IllustrationEmpty from '../icons/illustration-empty'
 
 interface InvoiceTableProps {
@@ -5,8 +6,16 @@ interface InvoiceTableProps {
 }
 
 export default function InvoiceTable({ invoices }: InvoiceTableProps) {
-  return (
-    <div className='flex flex-col flex-1 items-center justify-center'>
+  if (invoices.length > 0) {
+    return (
+      <ul className='flex flex-col gap-3'>
+        {invoices.map((invoice) => (
+          <InvoiceElement key={invoice.id} invoice={invoice} />
+        ))}
+      </ul>
+    )
+  } else {
+    return (
       <div>
         <IllustrationEmpty />
         <p className='text-[#0C0E16] dark:text-white text-xl text-center mt-6'>
@@ -17,6 +26,6 @@ export default function InvoiceTable({ invoices }: InvoiceTableProps) {
           and get started
         </p>
       </div>
-    </div>
-  )
+    )
+  }
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ThemeCtx } from './context/ThemeCtx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
+import Invoice from './pages/invoice'
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -50,6 +51,7 @@ function App() {
         <Router>
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='invoice/:id' element={<Invoice />} />
           </Routes>
         </Router>
       </div>

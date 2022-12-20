@@ -1,15 +1,8 @@
 type Invoice = {
-  id: number
-  date: Date
+  id: string
+  date: string
   contact: string
   amount: number
   currency: string
-  status: paidStatus
-}
-
-enum paidStatus {
-  paid = 'paid',
-  unpaid = 'unpaid',
-  pending = 'pending',
-  draft = 'draft',
+  status: string
 }
