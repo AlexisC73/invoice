@@ -7,7 +7,7 @@ export default function BaseLayout({
 }) {
   return (
     <div className='flex flex-col flex-1 lg:flex-row'>
-      <div className='flex flex-col'>
+      <div className='flex flex-col z-50'>
         <Header />
       </div>
       <div className='flex-1 flex flex-col'>{children}</div>

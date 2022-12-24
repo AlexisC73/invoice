@@ -1,0 +1,82 @@
+[
+  {
+    "id": "XM9141",
+    "date": "2018-01-01",
+    "dueDate": "2018-01-10",
+    "description": "Graphic design",
+    "currency": "GBP",
+    "status": "paid",
+    "contact": "alexgrim@mail.com",
+    "sender": {
+      "street": "123 Main Street",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10001",
+      "country": "United States"
+    },
+    "buyer": {
+      "name": "Jane Doe",
+      "address": {
+        "street": "456 Market Street",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94105",
+        "country": "US"
+      }
+    },
+    "items": [
+      {
+        "name": "Fifa 23",
+        "description": "Product 1 description",
+        "quantity": 1,
+        "unitPrice": 70
+      },
+      {
+        "name": "T-shirt de la france",
+        "description": "Product 2 description",
+        "quantity": 2,
+        "unitPrice": 130
+      }
+    ]
+  },
+  {
+    "id": "XM9142",
+    "date": "2022-11-05",
+    "dueDate": "2023-04-20",
+    "description": "Cours de grammaire",
+    "currency": "EUR",
+    "status": "pending",
+    "contact": "contact@gmail.com",
+    "sender": {
+      "street": "10 downing street",
+      "city": "London",
+      "state": "13",
+      "zip": "SW1A 2AA",
+      "country": "United Kingdom"
+    },
+    "buyer": {
+      "name": "Jean Dujardin",
+      "address": {
+        "street": "45 avenue de la république",
+        "city": "Paris",
+        "state": "",
+        "zip": "75001",
+        "country": "France"
+      }
+    },
+    "items": [
+      {
+        "name": "Blaid",
+        "description": "Livre 1",
+        "quantity": 1,
+        "unitPrice": 25
+      },
+      {
+        "name": "Restaurant",
+        "description": "Addition",
+        "quantity": 1,
+        "unitPrice": 254
+      }
+    ]
+  }
+]

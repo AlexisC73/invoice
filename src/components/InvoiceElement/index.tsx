@@ -23,7 +23,7 @@ export default function InvoiceElement({ invoice }: { invoice: Invoice }) {
           </p>
           <p className='text-[#7E88C3] dark:text-[#DFE3FA]'>
             <span className='text-[#888EB0] dark:text-[#DFE3FA]'>Due</span>{' '}
-            {createInvoiceDate(invoice.date)}
+            {createInvoiceDate(invoice.dueDate)}
           </p>
           <p className='text-[#848BB2] dark:text-white flex-1'>
             {invoice.buyer.name}

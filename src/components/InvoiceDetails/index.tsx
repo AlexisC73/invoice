@@ -27,7 +27,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
         </div>
       </div>
       <div id='receiver' className='flex flex-col sm:flex-row w-full gap-8'>
-        <div className='flex-1 flex sm:justify-between'>
+        <div className='flex-1 gap-2 flex sm:justify-between'>
           <div className='flex flex-1 flex-col justify-between'>
             <div className='flex-1'>
               <p className='text-[#7E88C3] dark:text-[#DFE3FA]'>Invoice Date</p>
@@ -71,7 +71,10 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
         <div className='px-2 pb-4'>
           <div className='sm:hidden p-4 flex flex-col gap-4'>
             {invoice.items.map((item) => (
-              <div className='flex items-center justify-between'>
+              <div
+                key={item.name}
+                className='flex items-center justify-between'
+              >
                 <div>
                   <p className='font-bold dark:text-white'>{item.name}</p>
                   <p className='text-[#7E88C3] font-bold dark:text-[#888EB0]'>
@@ -97,9 +100,13 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
             <thead>
               <tr className='text-[#7E88C3] dark:text-[#DFE3FA] h-16'>
                 <th className='text-left font-normal w-72'>Item Name</th>
-                <th className='font-normal w-32'>QTY.</th>
-                <th className='text-right font-normal w-32'>Price</th>
-                <th className='text-right font-normal w-32'>Total</th>
+                <th className='font-normal sm:max-lg:w-44 lg:w-32'>QTY.</th>
+                <th className='text-right font-normal sm:max-lg:w-44 lg:w-32'>
+                  Price
+                </th>
+                <th className='text-right font-normal sm:max-lg:w-44 lg:w-32'>
+                  Total
+                </th>
               </tr>
             </thead>
             <tbody>
