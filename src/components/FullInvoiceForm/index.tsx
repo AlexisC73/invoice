@@ -1,7 +1,11 @@
 import CustomButton from '../CustomButton'
 import InputElement from '../InputElement'
 
-export default function FullInvoiceForm() {
+export default function FullInvoiceForm({
+  hideAddItem,
+}: {
+  hideAddItem: () => void
+}) {
   return (
     <>
       <div className='mt-10 flex-1 sm:overflow-y-scroll px-5 sm:px-10'>
@@ -42,7 +46,7 @@ export default function FullInvoiceForm() {
         </div>
       </div>
       <div className='h-28 flex items-center gap-4 justify-end p-5'>
-        <CustomButton action={() => console.log('cancel')} type='tertiary'>
+        <CustomButton action={hideAddItem} type='tertiary'>
           Cancel
         </CustomButton>
         <CustomButton action={() => console.log('cancel')}>

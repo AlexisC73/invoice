@@ -8,8 +8,10 @@ const filter = ['draft', 'pending', 'paid']
 
 export default function InvoiceStatusBar({
   invoices,
+  showAddItem,
 }: {
   invoices: Invoice[]
+  showAddItem: () => void
 }) {
   const [filterOpen, setFilterOpen] = useState(false)
   const [filterStatus, setFilterStatus] = useState<{ [key: string]: boolean }>({
@@ -63,7 +65,10 @@ export default function InvoiceStatusBar({
         )}
       </div>
       <div className='flex bg-purple rounded-full gap-4 items-center p-2'>
-        <button className='bg-white w-8 h-8 flex items-center justify-center rounded-full'>
+        <button
+          onClick={showAddItem}
+          className='bg-white w-8 h-8 flex items-center justify-center rounded-full'
+        >
           <PlusIcon />
         </button>
         <p className='text-white text-xs font-bold pr-2 dark:text-white'>
