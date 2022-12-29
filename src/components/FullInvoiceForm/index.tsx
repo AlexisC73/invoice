@@ -13,7 +13,7 @@ export default function FullInvoiceForm({
 }) {
   const [invoice, setInvoice] = useState<Invoice>(
     defaultInvoice
-      ? defaultInvoice
+      ? { ...defaultInvoice }
       : {
           buyer: {
             address: {
@@ -153,7 +153,7 @@ export default function FullInvoiceForm({
                 </tbody>
               </table>
 
-              <div className='sm:hidden col-span-2'>
+              <div className='sm:hidden col-span-2 flex flex-col gap-10'>
                 {invoice.items.map((item) => (
                   <div
                     key={item.name}
