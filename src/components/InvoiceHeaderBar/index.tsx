@@ -4,9 +4,11 @@ import PaymentStatus from '../PaymentStatus'
 export default function InvoiceHeaderBar({
   invoice,
   onDeleteAction,
+  onEditAction,
 }: {
   invoice: Invoice
   onDeleteAction: () => void
+  onEditAction: () => void
 }) {
   return (
     <>
@@ -16,10 +18,7 @@ export default function InvoiceHeaderBar({
           <PaymentStatus status={invoice.status} />
         </div>
         <div className='max-sm:hidden flex gap-2'>
-          <CustomButton
-            action={() => console.log('click edit')}
-            type='tertiary'
-          >
+          <CustomButton action={onEditAction} type='tertiary'>
             Edit
           </CustomButton>
           <CustomButton action={onDeleteAction} type='danger'>
@@ -31,7 +30,7 @@ export default function InvoiceHeaderBar({
         </div>
       </div>
       <div className='fixed bottom-0 right-0 left-0 w-full justify-between bg-white h-20 items-center px-5 sm:hidden flex gap-2 dark:bg-[#1E2139]'>
-        <CustomButton action={() => console.log('click edit')} type='tertiary'>
+        <CustomButton action={onEditAction} type='tertiary'>
           Edit
         </CustomButton>
         <CustomButton action={onDeleteAction} type='danger'>

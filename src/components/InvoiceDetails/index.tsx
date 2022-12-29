@@ -122,7 +122,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
                       currency: invoice.currency,
                     }).format(item.unitPrice)}
                   </td>
-                  <td className='text-right font-bold text-white'>
+                  <td className='text-right font-bold text-black dark:text-white'>
                     {new Intl.NumberFormat('en-EN', {
                       style: 'currency',
                       currency: invoice.currency,

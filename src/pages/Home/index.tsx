@@ -28,7 +28,10 @@ export default function Home() {
     )
   }
   return (
-    <BaseLayout>
+    <BaseLayout
+      showOverlay={showAddItem}
+      actionOverlay={() => setShowAddItem(false)}
+    >
       <div className='flex flex-col flex-1 lg:max-w-[730px] w-full mx-auto mt-8 lg:mt-16 max-lg:px-5'>
         <InvoiceStatusBar
           showAddItem={() => setShowAddItem(true)}
@@ -40,11 +43,13 @@ export default function Home() {
       </div>
 
       {showAddItem && (
-        <div className='absolute inset-0 w-full mt-[70px] lg:mt-0 sm:w-5/6 lg:w-[719px] flex flex-col left-0 lg:pl-[101px] bg-white'>
+        <div className='absolute left-0 right-0 top-0 sm:bottom-0 w-full mt-[70px] lg:mt-0 sm:w-5/6 lg:w-[719px] flex flex-col lg:pl-[101px] bg-white dark:bg-[#141625]'>
           <div className='sm:hidden px-5 mt-5'>
-            <GoBack />
+            <GoBack action={() => setShowAddItem(false)} />
           </div>
-          <p className='px-5 sm:px-10 font-bold text-3xl pt-8'>New Invoice</p>
+          <p className='px-5 sm:px-10 font-bold text-3xl pt-8 dark:text-white'>
+            New Invoice
+          </p>
           <FullInvoiceForm hideAddItem={() => setShowAddItem(false)} />
         </div>
       )}

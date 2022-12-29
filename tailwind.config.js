@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{tsx, ts, jsx, js}'],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        19: 'repeat(19, minmax(0, 1fr))',
+      },
       height: {
         headerMobile: 72 / 16 + 'rem',
         headerDesktop: 101 / 16 + 'rem',

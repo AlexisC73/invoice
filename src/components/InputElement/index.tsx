@@ -1,18 +1,22 @@
+import CustomInput from '../CustomInput'
+
 export default function InputElement({
   label,
   customClassName,
+  value,
+  onChangeEvent,
 }: {
   label: string
   customClassName?: string
+  value: string
+  onChangeEvent?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
-  const defaultClassName = 'flex flex-col'
+  const defaultClassName = 'flex flex-col flex-1'
 
   return (
     <div id='form-input' className={`${customClassName} ${defaultClassName}`}>
-      <label className='mb-2 text-[#7E88C3]'>{label}</label>
-      <div className='flex border border-[#DFE3FA] h-12 rounded-lg font-bold overflow-hidden'>
-        <input type='text' className='flex-1 outline-none p-5' />
-      </div>
+      <label className='mb-2 text-[#7E88C3] dark:[#888EB0]'>{label}</label>
+      <CustomInput onChangeEvent={onChangeEvent} value={value} />
     </div>
   )
 }

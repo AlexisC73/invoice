@@ -5,6 +5,7 @@ import BaseLayout from '../../layout/BaseLayout'
 import ArrowLeft from '../../components/icons/arrow-left'
 import {
   CustomButton,
+  FullInvoiceForm,
   InvoiceDetails,
   InvoiceHeaderBar,
 } from '../../components'
@@ -15,15 +16,21 @@ export default function Invoice() {
   const invoice = data.find((item) => item.id === id)
 
   const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [showEditItem, setShowEditItem] = useState(false)
 
   if (invoice) {
     return (
-      <BaseLayout>
+      <BaseLayout
+        lockedToScreenSize={showEditItem}
+        showOverlay={showEditItem}
+        actionOverlay={() => setShowEditItem(false)}
+      >
         <div className='lg:max-w-[730px] w-full max-lg:px-5 mx-auto mt-10 flex flex-col max-sm:pb-20'>
-          <GoBack />
+          <GoBack href='/' />
           <div className='shadow-md mt-8 rounded-lg'>
             <InvoiceHeaderBar
               onDeleteAction={() => setShowDeleteModal(true)}
+              onEditAction={() => setShowEditItem(true)}
               invoice={invoice}
             />
           </div>
@@ -58,6 +65,20 @@ export default function Invoice() {
                 </CustomButton>
               </div>
             </div>
+          </div>
+        )}
+        {showEditItem && (
+          <div className='absolute left-0 right-0 top-0 sm:bottom-0 w-full mt-[70px] lg:mt-0 sm:w-5/6 lg:w-[719px] flex flex-col lg:pl-[101px] bg-white dark:bg-[#141625]'>
+            <div className='sm:hidden px-5 mt-5'>
+              <GoBack action={() => setShowEditItem(false)} />
+            </div>
+            <p className='px-5 sm:px-10 font-bold text-3xl pt-8 dark:text-white'>
+              New Invoice
+            </p>
+            <FullInvoiceForm
+              defaultInvoice={invoice}
+              hideAddItem={() => setShowEditItem(false)}
+            />
           </div>
         )}
       </BaseLayout>
