@@ -38,11 +38,21 @@ export default function TableCard({
         />
       </td>
       <td className='text-left col-span-4 flex items-center justify-center text-[#888EB0] font-bold text-base'>
-        {(isNaN(parseFloat(item.quantity)) ? 0 : parseFloat(item.quantity)) *
-          (isNaN(parseFloat(item.unitPrice))
-            ? 0
-            : parseFloat(item.unitPrice))}{' '}
-        $
+        {new Intl.NumberFormat('en-EN', {
+          style: 'currency',
+          currency: 'USD',
+        }).format(
+          parseFloat(
+            (
+              (isNaN(parseFloat(item.quantity))
+                ? 0
+                : parseFloat(item.quantity)) *
+              (isNaN(parseFloat(item.unitPrice))
+                ? 0
+                : parseFloat(item.unitPrice))
+            ).toFixed(2)
+          )
+        )}
       </td>
       <td
         onClick={() => handleDeleteItem(item.id)}
