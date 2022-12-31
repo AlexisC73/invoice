@@ -41,7 +41,7 @@ export default function FullInvoiceForm({
           <ItemList invoice={invoice} setInvoice={setInvoice} />
         </div>
       </div>
-      <div className='h-28 z-20 bg-white flex items-center justify-end gap-4 p-5'>
+      <div className='h-28 z-20 bg-white dark:bg-[#141625] flex items-center justify-end gap-4 p-5'>
         <div
           className={`flex flex-1 ${
             !defaultInvoice ? 'justify-start' : ' justify-end'
