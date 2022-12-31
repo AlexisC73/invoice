@@ -32,13 +32,16 @@ export default function FullInvoiceForm({
           </p>
         )}
       </div>
-      <div className='flex-1 sm:overflow-y-scroll px-5 sm:px-10 my-10 flex flex-col gap-10'>
-        <BillFrom invoice={invoice} setInvoice={setInvoice} />
-        <BillTo invoice={invoice} setInvoice={setInvoice} />
-        <InvoiceDetails invoice={invoice} setInvoice={setInvoice} />
-        <ItemList invoice={invoice} setInvoice={setInvoice} />
+      <div className='flex-1 sm:overflow-y-scroll'>
+        <div className='inset-x-0 bottom-0 h-1/3 absolute bg-gradient-to-t from-black opacity-10 to-transparent'></div>
+        <div className='flex-1 px-5 sm:px-10 my-10 flex flex-col gap-10 relative'>
+          <BillFrom invoice={invoice} setInvoice={setInvoice} />
+          <BillTo invoice={invoice} setInvoice={setInvoice} />
+          <InvoiceDetails invoice={invoice} setInvoice={setInvoice} />
+          <ItemList invoice={invoice} setInvoice={setInvoice} />
+        </div>
       </div>
-      <div className='h-28 flex items-center justify-end gap-4 p-5'>
+      <div className='h-28 z-20 bg-white flex items-center justify-end gap-4 p-5'>
         <div
           className={`flex flex-1 ${
             !defaultInvoice ? 'justify-start' : ' justify-end'
