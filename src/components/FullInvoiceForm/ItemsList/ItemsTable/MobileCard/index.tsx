@@ -44,10 +44,10 @@ export default function MobileCard({
       <div className='col-span-4 flex flex-col'>
         <p className='mb-2 text-[#7E88C3]'>Total</p>
         <p className='flex-1 flex items-center text-[#888EB0] font-bold text-base'>
-          {(isNaN(parseInt(item.quantity)) ? 0 : parseInt(item.quantity)) *
-            (isNaN(parseInt(item.unitPrice))
+          {(isNaN(parseFloat(item.quantity)) ? 0 : parseFloat(item.quantity)) *
+            (isNaN(parseFloat(item.unitPrice))
               ? 0
-              : parseInt(item.unitPrice))}{' '}
+              : parseFloat(item.unitPrice))}{' '}
           $
         </p>
       </div>

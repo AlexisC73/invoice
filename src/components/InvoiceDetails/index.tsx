@@ -79,7 +79,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
                     {new Intl.NumberFormat('en-EN', {
                       style: 'currency',
                       currency: invoice.currency,
-                    }).format(parseInt(item.unitPrice))}
+                    }).format(parseFloat(item.unitPrice))}
                   </p>
                 </div>
                 <div>
@@ -88,7 +88,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
                       style: 'currency',
                       currency: invoice.currency,
                     }).format(
-                      parseInt(item.unitPrice) * parseInt(item.quantity)
+                      parseFloat(item.unitPrice) * parseFloat(item.quantity)
                     )}
                   </p>
                 </div>
@@ -119,14 +119,14 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
                     {new Intl.NumberFormat('en-EN', {
                       style: 'currency',
                       currency: invoice.currency,
-                    }).format(parseInt(item.unitPrice))}
+                    }).format(parseFloat(item.unitPrice))}
                   </td>
                   <td className='text-right font-bold text-black dark:text-white'>
                     {new Intl.NumberFormat('en-EN', {
                       style: 'currency',
                       currency: invoice.currency,
                     }).format(
-                      parseInt(item.unitPrice) * parseInt(item.quantity)
+                      parseFloat(item.unitPrice) * parseFloat(item.quantity)
                     )}
                   </td>
                 </tr>

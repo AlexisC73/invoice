@@ -38,8 +38,10 @@ export default function TableCard({
         />
       </td>
       <td className='text-left col-span-4 flex items-center justify-center text-[#888EB0] font-bold text-base'>
-        {(isNaN(parseInt(item.quantity)) ? 0 : parseInt(item.quantity)) *
-          (isNaN(parseInt(item.unitPrice)) ? 0 : parseInt(item.unitPrice))}{' '}
+        {(isNaN(parseFloat(item.quantity)) ? 0 : parseFloat(item.quantity)) *
+          (isNaN(parseFloat(item.unitPrice))
+            ? 0
+            : parseFloat(item.unitPrice))}{' '}
         $
       </td>
       <td
