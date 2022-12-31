@@ -1,7 +1,7 @@
-import { MoonIcon, HeaderIcon, SunIcon } from '../icons'
+import { MoonIcon, HeaderIcon, SunIcon } from '../../icons'
 import { useContext } from 'react'
-import { ThemeCtx } from '../../context/ThemeCtx'
-import avatar from '../../assets/avatar.jpg'
+import { ThemeCtx } from '../../../context/ThemeCtx'
+import avatar from '../../../assets/avatar.jpg'
 
 export default function Header() {
   const { theme, toggleTheme } = useContext(ThemeCtx)

@@ -4,9 +4,9 @@ const Checked = () => {
       <path
         d='M1.5 4.5l2.124 2.124L8.97 1.28'
         stroke='#FFF'
-        stroke-width='2'
+        strokeWidth='2'
         fill='none'
-        fill-rule='evenodd'
+        fillRule='evenodd'
       />
     </svg>
   )

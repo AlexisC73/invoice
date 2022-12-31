@@ -18,25 +18,27 @@ export default function InvoiceHeaderBar({
           <PaymentStatus status={invoice.status} />
         </div>
         <div className='max-sm:hidden flex gap-2'>
-          <CustomButton action={onEditAction} type='tertiary'>
-            Edit
-          </CustomButton>
+          <CustomButton action={onEditAction}>Edit</CustomButton>
           <CustomButton action={onDeleteAction} type='danger'>
             Delete
           </CustomButton>
-          <CustomButton action={() => console.log('click mark as paid')}>
+          <CustomButton
+            type='primary'
+            action={() => console.log('click mark as paid')}
+          >
             Mark as Paid
           </CustomButton>
         </div>
       </div>
       <div className='fixed bottom-0 right-0 left-0 w-full justify-between bg-white h-20 items-center px-5 sm:hidden flex gap-2 dark:bg-[#1E2139]'>
-        <CustomButton action={onEditAction} type='tertiary'>
-          Edit
-        </CustomButton>
+        <CustomButton action={onEditAction}>Edit</CustomButton>
         <CustomButton action={onDeleteAction} type='danger'>
           Delete
         </CustomButton>
-        <CustomButton action={() => console.log('click mark as paid')}>
+        <CustomButton
+          type='primary'
+          action={() => console.log('click mark as paid')}
+        >
           Mark as Paid
         </CustomButton>
       </div>

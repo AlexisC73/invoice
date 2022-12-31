@@ -1,4 +1,4 @@
-import { CheckedIcon } from '../icons'
+import { CheckedIcon } from '../../icons'
 
 const CustomCheckbox = ({
   checked,

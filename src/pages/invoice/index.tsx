@@ -54,13 +54,13 @@ export default function Invoice() {
                 action cannot be undone.
               </p>
               <div className='flex self-end gap-3'>
-                <CustomButton
-                  action={() => setShowDeleteModal(false)}
-                  type='tertiary'
-                >
+                <CustomButton action={() => setShowDeleteModal(false)}>
                   Cancel
                 </CustomButton>
-                <CustomButton action={() => console.log('ok')} type='danger'>
+                <CustomButton
+                  action={() => console.log('Delete')}
+                  type='danger'
+                >
                   Delete
                 </CustomButton>
               </div>
@@ -68,18 +68,10 @@ export default function Invoice() {
           </div>
         )}
         {showEditItem && (
-          <div className='absolute left-0 right-0 top-0 sm:bottom-0 w-full mt-[70px] lg:mt-0 sm:w-5/6 lg:w-[719px] flex flex-col lg:pl-[101px] bg-white dark:bg-[#141625]'>
-            <div className='sm:hidden px-5 mt-5'>
-              <GoBackButton action={() => setShowEditItem(false)} />
-            </div>
-            <p className='px-5 sm:px-10 font-bold text-3xl pt-8 dark:text-white'>
-              New Invoice
-            </p>
-            <FullInvoiceForm
-              defaultInvoice={invoice}
-              hideAddItem={() => setShowEditItem(false)}
-            />
-          </div>
+          <FullInvoiceForm
+            defaultInvoice={invoice}
+            hideAddItem={() => setShowEditItem(false)}
+          />
         )}
       </BaseLayout>
     )

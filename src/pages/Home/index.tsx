@@ -6,7 +6,7 @@ import {
 } from '../../components'
 import BaseLayout from '../../layout/BaseLayout'
 import data from '../../data/invoices.json'
-import GoBack from '../../components/GoBack'
+import GoBack from '../../components/ui/GoBack'
 
 export default function Home() {
   const [invoices, setInvoices] = useState<Invoice[]>([])
@@ -43,15 +43,7 @@ export default function Home() {
       </div>
 
       {showAddItem && (
-        <div className='absolute left-0 right-0 top-0 sm:bottom-0 w-full mt-[70px] lg:mt-0 sm:w-5/6 lg:w-[719px] flex flex-col lg:pl-[101px] bg-white dark:bg-[#141625]'>
-          <div className='sm:hidden px-5 mt-5'>
-            <GoBack action={() => setShowAddItem(false)} />
-          </div>
-          <p className='px-5 sm:px-10 font-bold text-3xl pt-8 dark:text-white'>
-            New Invoice
-          </p>
-          <FullInvoiceForm hideAddItem={() => setShowAddItem(false)} />
-        </div>
+        <FullInvoiceForm hideAddItem={() => setShowAddItem(false)} />
       )}
     </BaseLayout>
   )

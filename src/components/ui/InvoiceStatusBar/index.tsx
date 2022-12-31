@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { PlusIcon } from '../icons'
-import ArrowDown from '../icons/arrow-down'
-import ArrowUp from '../icons/arrow-up'
-import CustomCheckbox from '../CustomCheckbox'
+import { PlusIcon } from '../../icons'
+import ArrowDown from '../../icons/arrow-down'
+import ArrowUp from '../../icons/arrow-up'
+import CustomCheckbox from '../../Form/CustomCheckbox'
 
 const filter = ['draft', 'pending', 'paid']
 
@@ -53,7 +53,10 @@ export default function InvoiceStatusBar({
             className='absolute bg-white dark:bg-[#252945] top-14 w-48 h-32 -right-12 rounded-lg px-7 flex flex-col gap-2 justify-center shadow-2xl'
           >
             {filter.map((item) => (
-              <li className='flex items-center gap-4 dark:text-white'>
+              <li
+                key={item}
+                className='flex items-center gap-4 dark:text-white'
+              >
                 <CustomCheckbox
                   checked={filterStatus[item]}
                   action={() => handleToggleFilter(item)}

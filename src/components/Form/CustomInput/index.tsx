@@ -9,9 +9,7 @@ export default function CustomInput({
   value: string
   onChangeEvent?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
-  const finalClassName = `w-full outline-none ${
-    type === 'number' ? '' : 'p-5'
-  } dark:text-white dark:bg-[#252945] ${
+  const finalClassName = `w-full h-12 p-2 outline-none dark:text-white dark:bg-[#252945] ${
     !customClassName ? '' : customClassName
   }`
   return (

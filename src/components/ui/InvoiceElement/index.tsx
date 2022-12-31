@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import PaymentStatus from '../PaymentStatus'
-import ArrowRight from '../icons/arrow-right'
-import { calculateBasketTotal } from '../../utils/basket'
-import { createInvoiceDate } from '../../utils/date'
+import ArrowRight from '../../icons/arrow-right'
+import { calculateBasketTotal } from '../../../utils/basket'
+import { createInvoiceDate } from '../../../utils/date'
 
 export default function InvoiceElement({ invoice }: { invoice: Invoice }) {
   const amount = new Intl.NumberFormat('en-EN', {

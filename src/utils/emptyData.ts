@@ -25,3 +25,10 @@ export const emptyInvoice = {
   },
   status: 'pending',
 }
+
+export const emptyItem: Omit<Product, 'id'> = {
+  description: '',
+  name: '',
+  quantity: '',
+  unitPrice: '',
+}

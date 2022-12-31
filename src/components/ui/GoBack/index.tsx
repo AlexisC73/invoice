@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import ArrowLeft from '../icons/arrow-left'
+import ArrowLeft from '../../icons/arrow-left'
 
 export default function GoBack({
   href,

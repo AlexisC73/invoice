@@ -1,5 +1,5 @@
-import { InvoiceElement } from '..'
-import IllustrationEmpty from '../icons/illustration-empty'
+import { InvoiceElement } from '../..'
+import IllustrationEmpty from '../../icons/illustration-empty'
 
 interface InvoiceTableProps {
   invoices: Invoice[]
