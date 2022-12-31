@@ -6,7 +6,6 @@ import {
 } from '../../components'
 import BaseLayout from '../../layout/BaseLayout'
 import data from '../../data/invoices.json'
-import GoBack from '../../components/ui/GoBack'
 
 export default function Home() {
   const [invoices, setInvoices] = useState<Invoice[]>([])
