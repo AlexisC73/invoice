@@ -19,7 +19,7 @@ export default function CustomInput({
       <input
         type={!type ? 'text' : type}
         className={finalClassName}
-        value={type === 'number' ? parseInt(value) : value}
+        value={value}
         onChange={onChangeEvent}
       />
     </div>

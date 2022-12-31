@@ -22,10 +22,12 @@ export default function BaseLayout({
           className='overlay bg-black absolute inset-0 opacity-30'
         ></div>
       )}
-      <div className='flex flex-col z-50 '>
+      <div className='flex flex-col z-50'>
         <Header />
       </div>
-      <div className='flex-1 flex flex-col'>{children}</div>
+      <div className='flex-1 flex flex-col overflow-scroll h-screen'>
+        {children}
+      </div>
     </div>
   )
 }

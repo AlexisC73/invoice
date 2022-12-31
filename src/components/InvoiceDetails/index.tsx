@@ -71,10 +71,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
         <div className='px-2 pb-4'>
           <div className='sm:hidden p-4 flex flex-col gap-4'>
             {invoice.items.map((item) => (
-              <div
-                key={item.name}
-                className='flex items-center justify-between'
-              >
+              <div key={item.id} className='flex items-center justify-between'>
                 <div>
                   <p className='font-bold dark:text-white'>{item.name}</p>
                   <p className='text-[#7E88C3] font-bold dark:text-[#888EB0]'>
@@ -82,7 +79,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
                     {new Intl.NumberFormat('en-EN', {
                       style: 'currency',
                       currency: invoice.currency,
-                    }).format(item.unitPrice)}
+                    }).format(parseInt(item.unitPrice))}
                   </p>
                 </div>
                 <div>
@@ -90,7 +87,9 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
                     {new Intl.NumberFormat('en-EN', {
                       style: 'currency',
                       currency: invoice.currency,
-                    }).format(item.unitPrice * item.quantity)}
+                    }).format(
+                      parseInt(item.unitPrice) * parseInt(item.quantity)
+                    )}
                   </p>
                 </div>
               </div>
@@ -111,7 +110,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
             </thead>
             <tbody>
               {invoice.items.map((item) => (
-                <tr key={item.name} className='h-16'>
+                <tr key={item.id} className='h-16'>
                   <td className='font-bold dark:text-white'>{item.name}</td>
                   <td className='text-center font-bold text-[#7E88C3] dark:text-[#DFE3FA]'>
                     {item.quantity}
@@ -120,13 +119,15 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
                     {new Intl.NumberFormat('en-EN', {
                       style: 'currency',
                       currency: invoice.currency,
-                    }).format(item.unitPrice)}
+                    }).format(parseInt(item.unitPrice))}
                   </td>
                   <td className='text-right font-bold text-black dark:text-white'>
                     {new Intl.NumberFormat('en-EN', {
                       style: 'currency',
                       currency: invoice.currency,
-                    }).format(item.unitPrice * item.quantity)}
+                    }).format(
+                      parseInt(item.unitPrice) * parseInt(item.quantity)
+                    )}
                   </td>
                 </tr>
               ))}

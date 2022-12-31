@@ -6,10 +6,10 @@ import ArrowLeft from '../../components/icons/arrow-left'
 import {
   CustomButton,
   FullInvoiceForm,
+  GoBackButton,
   InvoiceDetails,
   InvoiceHeaderBar,
 } from '../../components'
-import GoBack from '../../components/GoBack'
 
 export default function Invoice() {
   const { id } = useParams()
@@ -26,7 +26,7 @@ export default function Invoice() {
         actionOverlay={() => setShowEditItem(false)}
       >
         <div className='lg:max-w-[730px] w-full max-lg:px-5 mx-auto mt-10 flex flex-col max-sm:pb-20'>
-          <GoBack href='/' />
+          <GoBackButton href='/' />
           <div className='shadow-md mt-8 rounded-lg'>
             <InvoiceHeaderBar
               onDeleteAction={() => setShowDeleteModal(true)}
@@ -70,7 +70,7 @@ export default function Invoice() {
         {showEditItem && (
           <div className='absolute left-0 right-0 top-0 sm:bottom-0 w-full mt-[70px] lg:mt-0 sm:w-5/6 lg:w-[719px] flex flex-col lg:pl-[101px] bg-white dark:bg-[#141625]'>
             <div className='sm:hidden px-5 mt-5'>
-              <GoBack action={() => setShowEditItem(false)} />
+              <GoBackButton action={() => setShowEditItem(false)} />
             </div>
             <p className='px-5 sm:px-10 font-bold text-3xl pt-8 dark:text-white'>
               New Invoice
@@ -89,7 +89,7 @@ export default function Invoice() {
         <div className='lg:max-w-[730px] w-full max-lg:px-5 mx-auto mt-10 flex flex-1 flex-col max-sm:pb-20'>
           <div className='flex items-center gap-2 text-xs font-bold dark:text-white'>
             <ArrowLeft />
-            <Link to='/'>Go Back</Link>
+            <GoBackButton action={() => setShowEditItem(false)} />
           </div>
           <div className='flex flex-col flex-1 items-center justify-center dark:text-white'>
             <p className=''>L'id {id} n'existe pas.</p>

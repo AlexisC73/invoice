@@ -26,16 +26,18 @@
     },
     "items": [
       {
+        "id": "2ad04061-ef21-411a-8643-afc952f7a33d",
         "name": "Fifa 23",
         "description": "Product 1 description",
-        "quantity": 1,
-        "unitPrice": 70
+        "quantity": "1",
+        "unitPrice": "70"
       },
       {
+        "id": "eb933b5e-dc69-42a9-8e4e-9a808e9e13bc",
         "name": "T-shirt de la france",
         "description": "Product 2 description",
-        "quantity": 2,
-        "unitPrice": 130
+        "quantity": "2",
+        "unitPrice": "130"
       }
     ]
   },
@@ -66,16 +68,18 @@
     },
     "items": [
       {
+        "id": "73111651-d2f5-4ead-873b-a02f022abdf3",
         "name": "Blaid",
         "description": "Livre 1",
-        "quantity": 1,
-        "unitPrice": 25
+        "quantity": "1",
+        "unitPrice": "25"
       },
       {
+        "id": "27c34809-52d6-4733-98ba-c9d19c37d87d",
         "name": "Restaurant",
         "description": "Addition",
-        "quantity": 1,
-        "unitPrice": 254
+        "quantity": "1",
+        "unitPrice": "254"
       }
     ]
   }

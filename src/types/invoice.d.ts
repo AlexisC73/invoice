@@ -23,8 +23,9 @@ type Adress = {
 }
 
 type Product = {
+  id: string
   name: string
-  quantity: number
-  unitPrice: number
+  quantity: string
+  unitPrice: string
   description: string
 }
