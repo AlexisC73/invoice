@@ -5,10 +5,12 @@ export default function InvoiceHeaderBar({
   invoice,
   onDeleteAction,
   onEditAction,
+  onMarkAsPaid,
 }: {
   invoice: Invoice
   onDeleteAction: () => void
   onEditAction: () => void
+  onMarkAsPaid: () => void
 }) {
   return (
     <>
@@ -22,11 +24,8 @@ export default function InvoiceHeaderBar({
           <CustomButton action={onDeleteAction} type='danger'>
             Delete
           </CustomButton>
-          <CustomButton
-            type='primary'
-            action={() => console.log('click mark as paid')}
-          >
-            Mark as Paid
+          <CustomButton type='primary' action={onMarkAsPaid}>
+            {`Mark as ${invoice.status === 'paid' ? 'pending' : 'paid'}`}
           </CustomButton>
         </div>
       </div>

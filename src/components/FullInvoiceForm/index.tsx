@@ -8,11 +8,15 @@ import InvoiceDetails from './InvoiceDetails'
 import ItemList from './ItemsList'
 
 export default function FullInvoiceForm({
-  hideAddItem,
+  hideForm,
   defaultInvoice,
+  onSend,
+  onSaveAsDraft,
 }: {
-  hideAddItem: () => void
+  hideForm: () => void
   defaultInvoice?: Invoice
+  onSend: (invoice: Invoice) => void
+  onSaveAsDraft: (invoice: Invoice) => void
 }) {
   const [invoice, setInvoice] = useState<Invoice>(
     !defaultInvoice ? emptyInvoice : defaultInvoice
@@ -20,7 +24,7 @@ export default function FullInvoiceForm({
   return (
     <div className='absolute left-0 right-0 top-0 sm:bottom-0 w-full mt-[70px] lg:mt-0 sm:w-5/6 lg:w-[719px] flex flex-col lg:pl-[101px] bg-white dark:bg-[#141625]'>
       <div className='sm:hidden px-5 mt-5'>
-        <GoBack action={() => console.log('ok')} />
+        <GoBack action={hideForm} />
       </div>
       <div className='px-5 sm:px-10 font-bold text-3xl pt-8 dark:text-white'>
         {!defaultInvoice ? (
@@ -51,7 +55,7 @@ export default function FullInvoiceForm({
             customClass={
               !defaultInvoice ? 'justify-self-start' : ' justify-self-end'
             }
-            action={hideAddItem}
+            action={hideForm}
           >
             {!defaultInvoice ? 'Discard' : 'Cancel'}
           </CustomButton>
@@ -60,12 +64,12 @@ export default function FullInvoiceForm({
         {!defaultInvoice && (
           <CustomButton
             type='tertiary'
-            action={() => console.log('save as draft')}
+            action={() => onSaveAsDraft({ ...invoice, status: 'draft' })}
           >
             Save as Draft
           </CustomButton>
         )}
-        <CustomButton type='primary' action={() => console.log('Save')}>
+        <CustomButton type='primary' action={() => onSend(invoice)}>
           {!defaultInvoice ? 'Save & Send' : 'Save Changes'}
         </CustomButton>
       </div>

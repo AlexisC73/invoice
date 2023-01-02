@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { useState } from 'react'
-import data from '../../data/invoices.json'
+import { useCallback, useEffect, useState } from 'react'
 import BaseLayout from '../../layout/BaseLayout'
 import ArrowLeft from '../../components/icons/arrow-left'
 import {
@@ -13,11 +12,99 @@ import {
 
 export default function Invoice() {
   const { id } = useParams()
-  const invoice = data.find((item) => item.id === id)
+  const [invoice, setInvoice] = useState<Invoice | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [needReload, setNeedReload] = useState(true)
 
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [showEditItem, setShowEditItem] = useState(false)
 
+  const onSave = async (toUpdateInvoice: Invoice) => {
+    try {
+      console.log(toUpdateInvoice)
+      const res = await fetch('http://localhost:5500/invoice/' + id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ invoice: toUpdateInvoice }),
+      })
+      if (res.ok) {
+        setShowEditItem(false)
+        setIsLoading(false)
+        setNeedReload(true)
+      }
+    } catch (error) {
+      console.log(error)
+      //TODO : Make a notification for can't reach the server
+      //TODO : Disable the button on submit time to have response
+    }
+  }
+
+  const onMarkAsPaid = async (id: string | undefined, invoice: Invoice) => {
+    try {
+      if (!id) {
+        return
+      }
+      const res = await fetch('http://localhost:5500/invoice/status/' + id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          status: invoice.status === 'paid' ? 'pending' : 'paid',
+        }),
+      })
+      if (res.ok) {
+        setShowEditItem(false)
+        setIsLoading(false)
+        setNeedReload(true)
+      }
+    } catch (error) {
+      console.log(error)
+      //TODO : Make a notification for can't reach the server
+      //TODO : Disable the button on submit time to have response
+    }
+  }
+
+  const deleteInvoice = () => {
+    fetch('http://localhost:5500/invoice/' + id, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => {
+      if (res.ok) {
+        setShowDeleteModal(false)
+        window.location.href = '/'
+      }
+    })
+  }
+
+  const reloadInvoice = useCallback(async () => {
+    return await fetch('http://localhost:5500/invoice/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setInvoice(data)
+        setIsLoading(false)
+        setNeedReload(false)
+      })
+  }, [id])
+
+  useEffect(() => {
+    if (needReload) {
+      reloadInvoice()
+    }
+  }, [needReload, reloadInvoice])
+
+  if (isLoading) {
+    return <div>Chargement</div>
+  }
   if (invoice) {
     return (
       <BaseLayout
@@ -31,6 +118,7 @@ export default function Invoice() {
             <InvoiceHeaderBar
               onDeleteAction={() => setShowDeleteModal(true)}
               onEditAction={() => setShowEditItem(true)}
+              onMarkAsPaid={() => onMarkAsPaid(id, invoice)}
               invoice={invoice}
             />
           </div>
@@ -57,10 +145,7 @@ export default function Invoice() {
                 <CustomButton action={() => setShowDeleteModal(false)}>
                   Cancel
                 </CustomButton>
-                <CustomButton
-                  action={() => console.log('Delete')}
-                  type='danger'
-                >
+                <CustomButton action={() => deleteInvoice()} type='danger'>
                   Delete
                 </CustomButton>
               </div>
@@ -70,7 +155,9 @@ export default function Invoice() {
         {showEditItem && (
           <FullInvoiceForm
             defaultInvoice={invoice}
-            hideAddItem={() => setShowEditItem(false)}
+            hideForm={() => setShowEditItem(false)}
+            onSend={onSave}
+            onSaveAsDraft={() => console.log('This button should not be here')}
           />
         )}
       </BaseLayout>

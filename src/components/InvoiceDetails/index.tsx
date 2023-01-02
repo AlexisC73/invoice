@@ -20,9 +20,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
         <div className='text-left sm:text-right my-8 sm:mt-0 text-[#7E88C3] dark:text-[#DFE3FA] text-sm'>
           <p>{invoice.sender.street}</p>
           <p>{invoice.sender.city}</p>
-          <p>
-            {invoice.sender.zip} {invoice.sender.state}
-          </p>
+          <p>{invoice.sender.zip}</p>
           <p>{invoice.sender.country}</p>
         </div>
       </div>
@@ -50,9 +48,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
             <div className='text-[#7E88C3] dark:text-[#DFE3FA] text-left text-sm'>
               <p>{invoice.buyer.address.street}</p>
               <p>{invoice.buyer.address.city}</p>
-              <p>
-                {invoice.buyer.address.zip} {invoice.buyer.address.state}
-              </p>
+              <p>{invoice.buyer.address.zip}</p>
               <p>{invoice.buyer.address.country}</p>
             </div>
           </div>

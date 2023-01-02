@@ -19,7 +19,6 @@ type Adress = {
   city: string
   zip: string
   country: string
-  state: string
 }
 
 type Product = {

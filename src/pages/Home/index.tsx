@@ -5,17 +5,66 @@ import {
   FullInvoiceForm,
 } from '../../components'
 import BaseLayout from '../../layout/BaseLayout'
-import data from '../../data/invoices.json'
 
 export default function Home() {
   const [invoices, setInvoices] = useState<Invoice[]>([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [showAddItem, setShowAddItem] = useState(false)
+  const [needReload, setNeedReload] = useState(true)
+
+  const reloadInvoices = async () => {
+    await fetch('http://localhost:5500/invoice', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        console.log(res)
+        if (res.ok) {
+          return res.json()
+        } else {
+          //TODO: Send a notification for error
+          return []
+        }
+      })
+      .then((data) => {
+        setInvoices(data)
+      })
+      .catch((error) => {
+        setInvoices([])
+        //TODO: Make a notification for no connection
+      })
+    setIsLoaded(true)
+  }
 
   useEffect(() => {
-    setInvoices(data)
-    setIsLoaded(true)
-  }, [])
+    if (needReload) {
+      reloadInvoices()
+      setNeedReload(false)
+    }
+  }, [needReload])
+
+  const onSave = async (invoice: Invoice) => {
+    try {
+      const res = await fetch('http://localhost:5500/invoice', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ invoice: invoice }),
+      })
+      if (res.ok) {
+        setShowAddItem(false)
+        setIsLoaded(false)
+        setNeedReload(true)
+      }
+    } catch (error) {
+      console.log(error)
+      //TODO : Make a notification for can't reach the server
+      //TODO : Disable the button on submit time to have response
+    }
+  }
 
   if (!isLoaded) {
     return (
@@ -42,7 +91,11 @@ export default function Home() {
       </div>
 
       {showAddItem && (
-        <FullInvoiceForm hideAddItem={() => setShowAddItem(false)} />
+        <FullInvoiceForm
+          hideForm={() => setShowAddItem(false)}
+          onSend={onSave}
+          onSaveAsDraft={onSave}
+        />
       )}
     </BaseLayout>
   )
