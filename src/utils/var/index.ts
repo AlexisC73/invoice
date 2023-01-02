@@ -1,1 +1,1 @@
-export const api = process.env.INVOICE_API || 'http://localhost:5500'
+export const api = 'http://alexis-comte.com'
