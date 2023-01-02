@@ -9,6 +9,7 @@ import {
   InvoiceDetails,
   InvoiceHeaderBar,
 } from '../../components'
+import { api } from '../../utils/var'
 
 export default function Invoice() {
   const { id } = useParams()
@@ -22,7 +23,7 @@ export default function Invoice() {
   const onSave = async (toUpdateInvoice: Invoice) => {
     try {
       console.log(toUpdateInvoice)
-      const res = await fetch('http://localhost:5500/invoice/' + id, {
+      const res = await fetch(api + '/invoice/' + id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ export default function Invoice() {
       if (!id) {
         return
       }
-      const res = await fetch('http://localhost:5500/invoice/status/' + id, {
+      const res = await fetch(api + '/invoice/status/' + id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +69,7 @@ export default function Invoice() {
   }
 
   const deleteInvoice = () => {
-    fetch('http://localhost:5500/invoice/' + id, {
+    fetch(api + '/invoice/' + id, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ export default function Invoice() {
   }
 
   const reloadInvoice = useCallback(async () => {
-    return await fetch('http://localhost:5500/invoice/' + id, {
+    return await fetch(api + '/invoice/' + id, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

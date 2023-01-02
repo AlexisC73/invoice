@@ -5,6 +5,7 @@ import {
   FullInvoiceForm,
 } from '../../components'
 import BaseLayout from '../../layout/BaseLayout'
+import { api } from '../../utils/var'
 
 export default function Home() {
   const [invoices, setInvoices] = useState<Invoice[]>([])
@@ -13,7 +14,7 @@ export default function Home() {
   const [needReload, setNeedReload] = useState(true)
 
   const reloadInvoices = async () => {
-    await fetch('http://localhost:5500/invoice', {
+    await fetch(api + '/invoice', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +48,7 @@ export default function Home() {
 
   const onSave = async (invoice: Invoice) => {
     try {
-      const res = await fetch('http://localhost:5500/invoice', {
+      const res = await fetch(api + '/invoice', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
