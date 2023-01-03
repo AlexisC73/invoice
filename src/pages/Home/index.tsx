@@ -13,6 +13,10 @@ export default function Home() {
   const [showAddItem, setShowAddItem] = useState(false)
   const [needReload, setNeedReload] = useState(true)
 
+  const [filterStatus, setFilterStatus] = useState<Array<string>>([])
+
+  const [filteredInvoices, setFilteredInvoices] = useState<Invoice[]>(invoices)
+
   const reloadInvoices = async () => {
     await fetch(api + '/invoice', {
       method: 'GET',
@@ -46,6 +50,17 @@ export default function Home() {
       setNeedReload(false)
     }
   }, [needReload])
+
+  useEffect(() => {
+    if (filterStatus.length === 0) {
+      setFilteredInvoices(invoices)
+    } else {
+      const filtered = invoices.filter((invoice) =>
+        filterStatus.includes(invoice.status)
+      )
+      setFilteredInvoices(filtered)
+    }
+  }, [filterStatus, invoices])
 
   const onSave = async (invoice: Invoice) => {
     try {
@@ -86,10 +101,12 @@ export default function Home() {
       <div className='flex flex-col flex-1 lg:max-w-[730px] w-full mx-auto mt-8 lg:mt-16 max-lg:px-5'>
         <InvoiceStatusBar
           showAddItem={() => setShowAddItem(true)}
-          invoices={invoices}
+          invoices={filteredInvoices}
+          filterStatus={filterStatus}
+          setFilterStatus={setFilterStatus}
         />
         <div className='mt-5 flex flex-col flex-1'>
-          <InvoiceTable invoices={invoices} />
+          <InvoiceTable invoices={filteredInvoices} />
         </div>
       </div>
 

@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Invoice from './pages/invoice'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './pages/Login'
+import { verifyLocalStorage } from './utils'
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -36,15 +37,20 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (!storageLoaded) {
-      const user = localStorage.getItem('user')
-      if (user !== null) {
-        setUser(JSON.parse(user))
-      } else {
+    verifyLocalStorage()
+      .then((data) => {
+        if (data) {
+          setUser(data)
+          setStorageLoaded(true)
+        } else {
+          setUser({})
+          setStorageLoaded(true)
+        }
+      })
+      .catch(() => {
         setUser({})
-      }
-      setStorageLoaded(true)
-    }
+        setStorageLoaded(true)
+      })
   }, [storageLoaded])
 
   const switchTheme = () => {

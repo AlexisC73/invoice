@@ -1,40 +1,36 @@
 import { useLocation } from 'react-router-dom'
 import { GoogleSigninIcon } from '../../components/icons'
 import { api } from '../../utils/var'
-import { useEffect } from 'react'
+import { useEffect, useContext, useCallback } from 'react'
+import { getMyInfo } from '../../utils'
+import { UserCtx } from '../../context/UserCtx'
 
 export default function Login() {
   const location = useLocation()
   const connect = new URLSearchParams(location.search)?.get('connected')
+  const { user, setUser } = useContext(UserCtx)
 
-  const getUser = () => {
-    fetch(api + '/user/me', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        } else throw new Error('Problem with connection')
-      })
-      .then((data) => {
-        localStorage.setItem('user', JSON.stringify(data))
-        window.location.href = '/'
-      })
-      .catch((error) => console.log(error))
-  }
+  const saveInfoToLocalStorage = useCallback(async () => {
+    try {
+      const data = await getMyInfo()
+      setUser(data)
+      window.location.href = '/'
+    } catch (e) {
+      console.log(e)
+    }
+  }, [setUser])
 
   useEffect(() => {
-    if (localStorage.getItem('user') !== null) {
+    if (connect === 'true') {
+      saveInfoToLocalStorage()
+    }
+  }, [connect, saveInfoToLocalStorage])
+
+  useEffect(() => {
+    if (Object.keys(user).length > 0) {
       window.location.href = '/'
     }
-    if (connect === 'true') {
-      getUser()
-    }
-  }, [connect])
+  }, [user])
 
   return (
     <div className='flex flex-col h-screen items-center justify-center'>

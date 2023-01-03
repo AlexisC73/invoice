@@ -19,7 +19,7 @@ export default function InvoiceElement({ invoice }: { invoice: Invoice }) {
         <div className='flex w-full gap-12 items-center pr-4'>
           <p className='font-bold dark:text-white'>
             <span className='text-[#7E88C3]'>#</span>
-            {invoice.id}
+            ..{invoice.id.slice(invoice.id.length - 4)}
           </p>
           <p className='text-[#7E88C3] dark:text-[#DFE3FA]'>
             <span className='text-[#888EB0] dark:text-[#DFE3FA]'>Due</span>{' '}

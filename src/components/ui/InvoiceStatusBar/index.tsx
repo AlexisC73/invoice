@@ -4,24 +4,29 @@ import ArrowDown from '../../icons/arrow-down'
 import ArrowUp from '../../icons/arrow-up'
 import CustomCheckbox from '../../Form/CustomCheckbox'
 
-const filter = ['draft', 'pending', 'paid']
+const filters: string[] = ['draft', 'pending', 'paid']
 
 export default function InvoiceStatusBar({
   invoices,
   showAddItem,
+  filterStatus,
+  setFilterStatus,
 }: {
   invoices: Invoice[]
   showAddItem: () => void
+  filterStatus: string[]
+  setFilterStatus: React.Dispatch<React.SetStateAction<string[]>>
 }) {
   const [filterOpen, setFilterOpen] = useState(false)
-  const [filterStatus, setFilterStatus] = useState<{ [key: string]: boolean }>({
-    draft: false,
-    pending: false,
-    paid: false,
-  })
 
-  const handleToggleFilter = (key: string) => {
-    setFilterStatus((prev) => ({ ...prev, [key]: !prev[key] }))
+  const handleToggleFilter = (k: string) => {
+    const filterIsExist = filterStatus.findIndex((search) => search === k)
+    if (filterIsExist >= 0) {
+      const newFilterStatus = filterStatus.filter((filter) => filter !== k)
+      setFilterStatus(newFilterStatus)
+    } else {
+      setFilterStatus([...filterStatus, k])
+    }
   }
   return (
     <div className='flex'>
@@ -50,18 +55,20 @@ export default function InvoiceStatusBar({
         {filterOpen && (
           <ul
             onClick={(e) => e.stopPropagation()}
-            className='absolute bg-white dark:bg-[#252945] top-14 w-48 h-32 -right-12 rounded-lg px-7 flex flex-col gap-2 justify-center shadow-2xl'
+            className='absolute bg-white dark:bg-[#252945] top-14 w-48 -right-12 rounded-lg p-7 flex flex-col gap-2 justify-center shadow-2xl'
           >
-            {filter.map((item) => (
+            {filters.map((filter) => (
               <li
-                key={item}
+                key={filter}
                 className='flex items-center gap-4 dark:text-white'
               >
                 <CustomCheckbox
-                  checked={filterStatus[item]}
-                  action={() => handleToggleFilter(item)}
+                  checked={
+                    filterStatus.findIndex((search) => search === filter) >= 0
+                  }
+                  action={() => handleToggleFilter(filter)}
                 />
-                {item.slice(0, 1).toUpperCase() + item.slice(1)}
+                {filter.slice(0, 1).toUpperCase() + filter.slice(1)}
               </li>
             ))}
           </ul>

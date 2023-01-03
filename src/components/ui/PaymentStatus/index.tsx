@@ -1,5 +1,5 @@
 const PaymentStatus = ({ status }: { status: string }) => {
-  const customClassName = `w-[104px] h-10 flex gap-1 items-center justify-center font-bold text-[#373B53] dark:text-[#DFE3FA] rounded-lg ${
+  const customClassName = `h-10 flex gap-1 items-center justify-center font-bold text-[#373B53] w-[104px] dark:text-[#DFE3FA] rounded-lg ${
     status === 'paid'
       ? 'bg-[#33d6a011]'
       : status === 'pending'
