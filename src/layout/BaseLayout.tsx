@@ -14,6 +14,7 @@ export default function BaseLayout({
   const finalClassName = `flex flex-col flex-1 lg:flex-row ${
     lockedToScreenSize ? 'max-h-screen overflow-hidden' : ''
   }`
+
   return (
     <div className={finalClassName}>
       {showOverlay && (

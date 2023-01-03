@@ -19,6 +19,7 @@ export default function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
     })
       .then((res) => {
         console.log(res)
@@ -53,6 +54,7 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ invoice: invoice }),
       })
       if (res.ok) {

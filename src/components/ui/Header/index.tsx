@@ -1,10 +1,11 @@
 import { MoonIcon, HeaderIcon, SunIcon } from '../../icons'
 import { useContext } from 'react'
 import { ThemeCtx } from '../../../context/ThemeCtx'
-import avatar from '../../../assets/avatar.jpg'
+import { UserCtx } from '../../../context/UserCtx'
 
 export default function Header() {
   const { theme, toggleTheme } = useContext(ThemeCtx)
+  const { user } = useContext(UserCtx)
   return (
     <div className='h-headerMobile bg-[#1E2139] flex lg:flex-col lg:flex-1 lg:w-headerDesktop lg:rounded-tr-[30px] lg:overflow-hidden'>
       <div className='text-7xl lg:text-[101px]'>
@@ -22,7 +23,7 @@ export default function Header() {
       </div>
       <div className='flex h-headerMobile w-headerMobile lg:h-headerDesktop lg:w-headerDesktop items-center justify-center'>
         <div className='h-8 w-8 lg:h-10 lg:w-10 overflow-hidden rounded-full'>
-          <img alt='profile' src={avatar} />
+          <img alt='profile' src={user.photo} />
         </div>
       </div>
     </div>

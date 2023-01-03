@@ -60,93 +60,98 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
           </p>
         </div>
       </div>
-      <div
-        id='facture'
-        className='w-full bg-[#F9FAFE] dark:bg-[#252945] rounded-lg overflow-hidden mt-10'
-      >
-        <div className='px-2 pb-4'>
-          <div className='sm:hidden p-4 flex flex-col gap-4'>
-            {invoice.items.map((item) => (
-              <div key={item.id} className='flex items-center justify-between'>
-                <div>
-                  <p className='font-bold dark:text-white'>{item.name}</p>
-                  <p className='text-[#7E88C3] font-bold dark:text-[#888EB0]'>
-                    {item.quantity} x{' '}
-                    {new Intl.NumberFormat('en-EN', {
-                      style: 'currency',
-                      currency: invoice.currency,
-                    }).format(parseFloat(item.unitPrice))}
-                  </p>
-                </div>
-                <div>
-                  <p className='font-bold dark:text-white'>
-                    {new Intl.NumberFormat('en-EN', {
-                      style: 'currency',
-                      currency: invoice.currency,
-                    }).format(
-                      parseFloat(item.unitPrice) * parseFloat(item.quantity)
-                    )}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <table className='hidden table-auto sm:block px-6'>
-            <thead>
-              <tr className='text-[#7E88C3] dark:text-[#DFE3FA] h-16'>
-                <th className='text-left font-normal w-72'>Item Name</th>
-                <th className='font-normal sm:max-lg:w-44 lg:w-32'>QTY.</th>
-                <th className='text-right font-normal sm:max-lg:w-44 lg:w-32'>
-                  Price
-                </th>
-                <th className='text-right font-normal sm:max-lg:w-44 lg:w-32'>
-                  Total
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {invoice.items.map((item) => (
-                <tr key={item.id} className='h-16'>
-                  <td className='font-bold dark:text-white'>{item.name}</td>
-                  <td className='text-center font-bold text-[#7E88C3] dark:text-[#DFE3FA]'>
-                    {item.quantity}
-                  </td>
-                  <td className='text-right font-bold text-[#7E88C3] dark:text-[#DFE3FA]'>
-                    {new Intl.NumberFormat('en-EN', {
-                      style: 'currency',
-                      currency: invoice.currency,
-                    }).format(parseFloat(item.unitPrice))}
-                  </td>
-                  <td className='text-right font-bold text-black dark:text-white'>
-                    {new Intl.NumberFormat('en-EN', {
-                      style: 'currency',
-                      currency: invoice.currency,
-                    }).format(
-                      parseFloat(item.unitPrice) * parseFloat(item.quantity)
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
+      {invoice.items.length > 0 && (
         <div
-          id='table-footer'
-          className='bg-[#373B53] dark:bg-[#0C0E16] flex items-center justify-between p-4 sm:p-8'
+          id='facture'
+          className='w-full bg-[#F9FAFE] dark:bg-[#252945] rounded-lg overflow-hidden mt-10'
         >
-          <p className='text-sm text-white'>
-            <span className='hidden sm:block'>Amount Due</span>
-            <span className='sm:hidden'>Grand Total</span>
-          </p>
-          <p className='text-3xl text-white font-bold'>
-            {new Intl.NumberFormat('en-EN', {
-              style: 'currency',
-              currency: invoice.currency,
-            }).format(calculateBasketTotal(invoice.items))}
-          </p>
+          <div className='px-2 pb-4'>
+            <div className='sm:hidden p-4 flex flex-col gap-4'>
+              {invoice.items.map((item) => (
+                <div
+                  key={item.id}
+                  className='flex items-center justify-between'
+                >
+                  <div>
+                    <p className='font-bold dark:text-white'>{item.name}</p>
+                    <p className='text-[#7E88C3] font-bold dark:text-[#888EB0]'>
+                      {item.quantity} x{' '}
+                      {new Intl.NumberFormat('en-EN', {
+                        style: 'currency',
+                        currency: invoice.currency,
+                      }).format(parseFloat(item.unitPrice))}
+                    </p>
+                  </div>
+                  <div>
+                    <p className='font-bold dark:text-white'>
+                      {new Intl.NumberFormat('en-EN', {
+                        style: 'currency',
+                        currency: invoice.currency,
+                      }).format(
+                        parseFloat(item.unitPrice) * parseFloat(item.quantity)
+                      )}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <table className='hidden table-auto sm:block px-6'>
+              <thead>
+                <tr className='text-[#7E88C3] dark:text-[#DFE3FA] h-16'>
+                  <th className='text-left font-normal w-72'>Item Name</th>
+                  <th className='font-normal sm:max-lg:w-44 lg:w-32'>QTY.</th>
+                  <th className='text-right font-normal sm:max-lg:w-44 lg:w-32'>
+                    Price
+                  </th>
+                  <th className='text-right font-normal sm:max-lg:w-44 lg:w-32'>
+                    Total
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {invoice.items.map((item) => (
+                  <tr key={item.id} className='h-16'>
+                    <td className='font-bold dark:text-white'>{item.name}</td>
+                    <td className='text-center font-bold text-[#7E88C3] dark:text-[#DFE3FA]'>
+                      {item.quantity}
+                    </td>
+                    <td className='text-right font-bold text-[#7E88C3] dark:text-[#DFE3FA]'>
+                      {new Intl.NumberFormat('en-EN', {
+                        style: 'currency',
+                        currency: invoice.currency,
+                      }).format(parseFloat(item.unitPrice))}
+                    </td>
+                    <td className='text-right font-bold text-black dark:text-white'>
+                      {new Intl.NumberFormat('en-EN', {
+                        style: 'currency',
+                        currency: invoice.currency,
+                      }).format(
+                        parseFloat(item.unitPrice) * parseFloat(item.quantity)
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div
+            id='table-footer'
+            className='bg-[#373B53] dark:bg-[#0C0E16] flex items-center justify-between p-4 sm:p-8'
+          >
+            <p className='text-sm text-white'>
+              <span className='hidden sm:block'>Amount Due</span>
+              <span className='sm:hidden'>Grand Total</span>
+            </p>
+            <p className='text-3xl text-white font-bold'>
+              {new Intl.NumberFormat('en-EN', {
+                style: 'currency',
+                currency: invoice.currency,
+              }).format(calculateBasketTotal(invoice.items))}
+            </p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }

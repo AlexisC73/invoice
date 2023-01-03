@@ -28,6 +28,7 @@ export default function Invoice() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ invoice: toUpdateInvoice }),
       })
       if (res.ok) {
@@ -52,6 +53,7 @@ export default function Invoice() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           status: invoice.status === 'paid' ? 'pending' : 'paid',
         }),
@@ -74,6 +76,7 @@ export default function Invoice() {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
     }).then((res) => {
       if (res.ok) {
         setShowDeleteModal(false)
@@ -88,6 +91,7 @@ export default function Invoice() {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
     })
       .then((res) => res.json())
       .then((data) => {
