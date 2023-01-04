@@ -22,7 +22,6 @@ export default function Invoice() {
 
   const onSave = async (toUpdateInvoice: Invoice) => {
     try {
-      console.log(toUpdateInvoice)
       const res = await fetch(api + '/invoice/' + id, {
         method: 'PUT',
         headers: {

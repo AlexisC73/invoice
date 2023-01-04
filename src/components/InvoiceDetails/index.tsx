@@ -11,7 +11,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
         <div>
           <p className='font-bold text-lg dark:text-white'>
             <span className='text-[#888EB0]'>#</span>
-            {invoice.id}
+            ..{invoice.id.slice(invoice.id.length - 4)}
           </p>
           <p className='text-[#7E88C3] dark:text-[#DFE3FA]'>
             {invoice.description}
@@ -55,7 +55,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
         </div>
         <div className='flex-1 sm:pl-5'>
           <p className='text-[#7E88C3] dark:text-[#DFE3FA]'>Sent to</p>
-          <p className='text-xl font-bold mt-2 dark:text-white'>
+          <p className='text-xl font-bold mt-2 dark:text-white break-words'>
             {invoice.contact}
           </p>
         </div>

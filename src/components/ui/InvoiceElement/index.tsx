@@ -37,7 +37,7 @@ export default function InvoiceElement({ invoice }: { invoice: Invoice }) {
         <div className='flex items-center justify-start'>
           <div className='font-bold dark:text-white'>
             <span className='text-[#7E88C3]'>#</span>
-            {invoice.id}
+            ..{invoice.id.slice(invoice.id.length - 4)}
           </div>
         </div>
         <div className='flex items-center'>

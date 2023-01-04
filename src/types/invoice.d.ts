@@ -7,6 +7,7 @@ type Invoice = {
   status: string
   contact: string
   sender: Adress
+  owner: string
   buyer: {
     name: string
     address: Adress

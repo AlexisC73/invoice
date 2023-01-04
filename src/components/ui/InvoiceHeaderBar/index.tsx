@@ -34,10 +34,7 @@ export default function InvoiceHeaderBar({
         <CustomButton action={onDeleteAction} type='danger'>
           Delete
         </CustomButton>
-        <CustomButton
-          type='primary'
-          action={() => console.log('click mark as paid')}
-        >
+        <CustomButton type='primary' action={onMarkAsPaid}>
           Mark as Paid
         </CustomButton>
       </div>

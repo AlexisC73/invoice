@@ -1,3 +1,4 @@
+import { allInvoiceSchema } from '../../../joi/schema/invoice'
 import InputElement from '../../Form/InputElement'
 import FormTitle from '../FormTitle'
 
@@ -29,7 +30,9 @@ export default function BillFrom({
           label='Street Address'
           customClassName='col-span-2 sm:col-span-3'
           value={invoice.sender.street}
-          onChangeEvent={(e) => handleUpdateSenderInfo(e, 'street')}
+          onChangeEvent={(e) => {
+            handleUpdateSenderInfo(e, 'street')
+          }}
         />
         <InputElement
           label='City'
