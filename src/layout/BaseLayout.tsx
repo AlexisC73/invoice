@@ -26,7 +26,7 @@ export default function BaseLayout({
       <div className='flex flex-col z-50'>
         <Header />
       </div>
-      <div className='flex-1 flex flex-col overflow-scroll h-screen'>
+      <div className='flex-1 flex flex-col overflow-y-scroll h-screen'>
         {children}
       </div>
     </div>

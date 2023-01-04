@@ -1,5 +1,4 @@
-import * as joi from 'joi'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function CustomInput({
   type,
@@ -19,9 +18,9 @@ export default function CustomInput({
   return (
     <>
       <div
-        className={`flex border-2 border-[#DFE3FA] dark:border-[#1E2139] ${
-          isFocused ? 'border-[#9277FF]' : ''
-        } h-12 rounded-lg font-bold overflow-hidden flex-1`}
+        className={`flex border-2 bg-white dark:bg-[#252945] border-[#DFE3FA] dark:border-[#1E2139] ${
+          isFocused ? 'border-[#9277FF] dark:border-[#9277ff]' : ''
+        } h-12 rounded-lg font-bold overflow-hidden flex-1 p-1`}
       >
         <input
           type={!type ? 'text' : type}

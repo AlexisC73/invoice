@@ -4,7 +4,14 @@ import DisplayDate from './DisplayDate'
 import { MONTHS, getFirstMondayBeforeDate } from './utils'
 import { useState, useEffect } from 'react'
 
-export default function DatePicker() {
+export default function DatePicker({
+  customClassName,
+  action,
+}: {
+  customClassName?: string
+  action: (date: Date) => void
+}) {
+  const finalClassName = `p-6 w-full bg-white dark:bg-[#252945] shadow-md rounded-xl flex flex-col gap-3 items-center ${customClassName}`
   const currentDate = new Date(Date.now())
   const [selectedDate, setSelectedDate] = useState({
     month: currentDate.getMonth(),
@@ -39,7 +46,7 @@ export default function DatePicker() {
   }, [selectedDate])
 
   return (
-    <div className='w-[240px] p-6 shadow-md rounded-xl flex flex-col gap-3 items-center'>
+    <div className={finalClassName}>
       <div className='flex w-full justify-between'>
         <div
           className='flex items-center cursor-pointer'
@@ -48,7 +55,7 @@ export default function DatePicker() {
           <ArrowLeft />
         </div>
 
-        <p className='font-bold'>
+        <p className='font-bold dark:text-white'>
           {MONTHS[selectedDate.month].short} {selectedDate.year}
         </p>
         <div
@@ -66,6 +73,7 @@ export default function DatePicker() {
                 key={index}
                 date={new Date(firstMondayBefore.getTime() + index * 86400000)}
                 selectedDate={selectedDate}
+                action={action}
               />
             ))}
           </tr>

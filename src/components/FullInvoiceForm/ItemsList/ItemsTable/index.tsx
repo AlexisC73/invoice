@@ -26,7 +26,7 @@ export default function ItemCard({
             <th className='col-span-1'></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='flex flex-col gap-2'>
           {items.map((item, index) => (
             <TableCard
               key={item.id}

@@ -1,5 +1,4 @@
 import CustomInput from '../CustomInput'
-import * as joi from 'joi'
 
 export default function InputElement({
   label,
