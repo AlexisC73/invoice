@@ -35,7 +35,7 @@ export default function InvoiceHeaderBar({
           Delete
         </CustomButton>
         <CustomButton type='primary' action={onMarkAsPaid}>
-          Mark as Paid
+          {`Mark as ${invoice.status === 'paid' ? 'pending' : 'paid'}`}
         </CustomButton>
       </div>
     </>
