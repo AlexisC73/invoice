@@ -21,8 +21,7 @@ export default function CustomInput({
   const [initialFocus, setInitialFocus] = useState(false)
   const [hasError, setHasError] = useState(false)
 
-  const defaultClassName =
-    'flex border-2 bg-white dark:bg-[#252945] border-[#DFE3FA] dark:border-[#1E2139] h-12 rounded-lg font-bold overflow-hidden flex-1 p-1'
+  const defaultClassName = `flex border-2 bg-white dark:bg-[#252945] border-[#DFE3FA] dark:border-[#1E2139] h-12 rounded-lg font-bold overflow-hidden flex-1 p-1`
   const addedClassName = `${
     hasError && !isFocused ? 'border-[#ec5757] dark:border-[#ec5757]' : ''
   }`
@@ -51,10 +50,18 @@ export default function CustomInput({
   }
   return (
     <>
-      <div className={defaultClassName + ' ' + addedClassName}>
+      <div
+        className={
+          defaultClassName +
+          ' ' +
+          addedClassName +
+          ' ' +
+          (isFocused ? 'border-[#7c5dfa] dark:border-[#7c5dfa]' : '')
+        }
+      >
         <input
           type={!type ? 'text' : type}
-          className='p-2 outline-none dark:text-white dark:bg-[#252945]'
+          className='p-2 outline-none flex-1 dark:text-white dark:bg-[#252945]'
           value={value}
           onChange={onChangeEvent}
           onFocus={(e) => handleOnFocus(true)}
