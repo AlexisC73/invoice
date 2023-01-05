@@ -32,6 +32,7 @@ export default function MobileCard({
           value={item.quantity.toString()}
           customInputClass='px-0 text-center'
           onChangeEvent={(e) => handleUpdateItemList(e, item.id, 'quantity')}
+          placeholder='0'
         />
       </div>
       <div className='col-span-4'>
@@ -39,16 +40,21 @@ export default function MobileCard({
           label='Price'
           value={item.unitPrice.toString()}
           onChangeEvent={(e) => handleUpdateItemList(e, item.id, 'unitPrice')}
+          placeholder='0.00'
         />
       </div>
       <div className='col-span-4 flex flex-col'>
         <p className='mb-2 text-[#7E88C3]'>Total</p>
         <p className='flex-1 flex items-center text-[#888EB0] font-bold text-base'>
-          {(isNaN(parseFloat(item.quantity)) ? 0 : parseFloat(item.quantity)) *
+          {/* {(isNaN(parseFloat(item.quantity)) ? 0 : parseFloat(item.quantity)) *
             (isNaN(parseFloat(item.unitPrice))
               ? 0
               : parseFloat(item.unitPrice))}{' '}
-          $
+          $ */}
+          ${' '}
+          {isNaN(parseFloat(item.quantity)) || isNaN(parseFloat(item.unitPrice))
+            ? '0.00'
+            : parseFloat(item.quantity) * parseFloat(item.unitPrice)}
         </p>
       </div>
       <div

@@ -8,6 +8,7 @@ export default function InputElement({
   onChangeEvent,
   customInputClass,
   canBeEmpty,
+  placeholder,
 }: {
   label: string
   customClassName?: string
@@ -16,6 +17,7 @@ export default function InputElement({
   customInputClass?: string
   ifErrorText?: string
   canBeEmpty?: boolean
+  placeholder?: string
 }) {
   const defaultClassName = 'flex flex-col flex-1'
   const [hasError, setHasError] = useState(false)
@@ -33,6 +35,7 @@ export default function InputElement({
         value={value}
         hasErrorFunction={setHasError}
         canBeEmpty={canBeEmpty !== undefined ? canBeEmpty : true}
+        placeholder={placeholder !== undefined ? placeholder : ''}
       />
     </div>
   )

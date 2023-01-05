@@ -7,6 +7,7 @@ export default function CustomInput({
   onChangeEvent,
   canBeEmpty,
   hasErrorFunction,
+  placeholder,
 }: {
   type?: string
   customClassName?: string
@@ -14,6 +15,7 @@ export default function CustomInput({
   onChangeEvent?: (e: React.ChangeEvent<HTMLInputElement>) => void
   canBeEmpty?: boolean
   hasErrorFunction?: (hasError: boolean) => void
+  placeholder?: string
 }) {
   const [isFocused, setIsFocused] = useState(false)
   const [initialFocus, setInitialFocus] = useState(false)
@@ -57,6 +59,7 @@ export default function CustomInput({
           onChange={onChangeEvent}
           onFocus={(e) => handleOnFocus(true)}
           onBlur={(e) => handleOnFocus(false)}
+          placeholder={placeholder !== undefined ? placeholder : ''}
         />
       </div>
     </>

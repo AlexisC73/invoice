@@ -29,6 +29,7 @@ export default function TableCard({
           value={item.quantity.toString()}
           onChangeEvent={(e) => handleUpdateItemList(e, item.id, 'quantity')}
           canBeEmpty={false}
+          placeholder='0'
         />
       </td>
       <td className='text-left col-span-4'>
@@ -38,6 +39,7 @@ export default function TableCard({
             handleUpdateItemList(e, item.id, 'unitPrice')
           }
           canBeEmpty={false}
+          placeholder='0.00'
         />
       </td>
       <td className='text-left col-span-4 flex items-center justify-center text-[#888EB0] font-bold text-base'>
