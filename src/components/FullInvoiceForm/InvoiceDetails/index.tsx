@@ -17,37 +17,32 @@ export default function InvoiceDetails({
       [index]: e.target.value,
     }))
   }
-  const handleUpdateDateInfo = (date: Date) => {
+  const handleUpdateDateInfo = (inputName: string) => (date: Date) => {
     setInvoice((prev) => ({
       ...prev,
-      date: date.toISOString(),
+      [inputName]: date.toISOString(),
     }))
   }
   return (
     <div className='grid grid-cols-4 col-span-2 sm:col-span-3 gap-5'>
-      {/* <InputElement
-        label='Invoice Date'
-        customClassName='sm:col-span-2 col-span-4'
-        value={invoice.date}
-        onChangeEvent={(e) => handleUpdateInvoiceInfo(e, 'date')}
-      /> */}
       <DateInput
         customClassName='sm:col-span-2 col-span-4'
         label='Invoice Date'
         value={invoice.date}
-        onChangeEvent={handleUpdateDateInfo}
+        onChangeEvent={handleUpdateDateInfo('date')}
       />
-      <InputElement
-        label='Payment Terms'
+      <DateInput
         customClassName='sm:col-span-2 col-span-4'
+        label='Payment Terms'
         value={invoice.dueDate}
-        onChangeEvent={(e) => handleUpdateInvoiceInfo(e, 'dueDate')}
+        onChangeEvent={handleUpdateDateInfo('dueDate')}
       />
       <InputElement
         label='Project Description'
         customClassName='col-span-4'
         value={invoice.description}
         onChangeEvent={(e) => handleUpdateInvoiceInfo(e, 'description')}
+        canBeEmpty={true}
       />
     </div>
   )

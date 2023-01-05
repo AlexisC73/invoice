@@ -20,6 +20,7 @@ export default function TableCard({
         <CustomInput
           value={item.name}
           onChangeEvent={(e) => handleUpdateItemList(e, item.id, 'name')}
+          canBeEmpty={false}
         />
       </td>
       <td className='text-left col-span-2'>
@@ -27,6 +28,7 @@ export default function TableCard({
           customClassName='text-center p-0'
           value={item.quantity.toString()}
           onChangeEvent={(e) => handleUpdateItemList(e, item.id, 'quantity')}
+          canBeEmpty={false}
         />
       </td>
       <td className='text-left col-span-4'>
@@ -35,6 +37,7 @@ export default function TableCard({
           onChangeEvent={(e: React.ChangeEvent<HTMLInputElement>) =>
             handleUpdateItemList(e, item.id, 'unitPrice')
           }
+          canBeEmpty={false}
         />
       </td>
       <td className='text-left col-span-4 flex items-center justify-center text-[#888EB0] font-bold text-base'>

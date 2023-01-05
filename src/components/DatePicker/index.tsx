@@ -46,7 +46,7 @@ export default function DatePicker({
   }, [selectedDate])
 
   return (
-    <div className={finalClassName}>
+    <div onClick={(e) => e.stopPropagation()} className={finalClassName}>
       <div className='flex w-full justify-between'>
         <div
           className='flex items-center cursor-pointer'

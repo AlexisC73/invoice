@@ -29,7 +29,7 @@ export default function DateInput({
     setShowDatePicker(false)
   }
 
-  const defaultClassName = 'flex flex-col flex-1 relative'
+  const defaultClassName = 'flex flex-col flex-1 relative cursor-pointer'
   const finalClassName = `w-full h-12 p-2 outline-none flex items-center dark:text-white ${customInputClass}`
 
   return (
@@ -37,15 +37,13 @@ export default function DateInput({
       <div id='form-input' className={`${customClassName} ${defaultClassName}`}>
         <label className='mb-2 text-[#7E88C3] dark:[#888EB0]'>{label}</label>
         <div
+          onClick={handleShowDatePicker}
           className={`flex items-center dark:bg-[#252945] border-2 border-[#DFE3FA] dark:border-[#1E2139] rounded-lg font-bold overflow-hidden flex-1 ${
             showDatePicker ? 'border-[#9277FF] dark:border-[#9277FF]' : ''
           }`}
         >
           <p className={finalClassName}>{isToday ? 'Today' : dateString}</p>
-          <div
-            onClick={handleShowDatePicker}
-            className='w-12 flex items-center justify-center cursor-pointer dark:bg-[#252945]'
-          >
+          <div className='w-12 flex items-center justify-center dark:bg-[#252945]'>
             <CalendarIcon />
           </div>
         </div>

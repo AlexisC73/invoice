@@ -37,6 +37,7 @@ export default function BillTo({
               buyer: { ...prev.buyer, name: e.target.value },
             }))
           }
+          canBeEmpty={false}
         />
         <InputElement
           label="Client's Email"
@@ -48,28 +49,33 @@ export default function BillTo({
               contact: e.target.value,
             }))
           }
+          canBeEmpty={false}
         />
         <InputElement
           label='Street Address'
           customClassName='sm:col-span-3 col-span-2'
           value={invoice.buyer.address.street}
           onChangeEvent={(e) => handleUpdateBuyerAdressInfo(e, 'street')}
+          canBeEmpty={false}
         />
         <InputElement
           label='City'
           value={invoice.buyer.address.city}
           onChangeEvent={(e) => handleUpdateBuyerAdressInfo(e, 'city')}
+          canBeEmpty={false}
         />
         <InputElement
           label='Post Code'
           value={invoice.buyer.address.zip}
           onChangeEvent={(e) => handleUpdateBuyerAdressInfo(e, 'zip')}
+          canBeEmpty={false}
         />
         <InputElement
           label='Country'
           customClassName='max-sm:col-span-2'
           value={invoice.buyer.address.country}
           onChangeEvent={(e) => handleUpdateBuyerAdressInfo(e, 'country')}
+          canBeEmpty={false}
         />
       </div>
     </div>
