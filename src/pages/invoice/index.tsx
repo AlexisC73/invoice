@@ -107,7 +107,11 @@ export default function Invoice() {
   }, [needReload, reloadInvoice])
 
   if (isLoading) {
-    return <div>Chargement</div>
+    return (
+      <BaseLayout title='chargement ...'>
+        <div>Chargement</div>
+      </BaseLayout>
+    )
   }
   if (invoice) {
     return (
@@ -115,6 +119,7 @@ export default function Invoice() {
         lockedToScreenSize={showEditItem}
         showOverlay={showEditItem}
         actionOverlay={() => setShowEditItem(false)}
+        title='Invoice'
       >
         <div className='lg:max-w-[730px] w-full max-lg:px-5 mx-auto mt-10 flex flex-col max-sm:pb-20'>
           <GoBackButton href='/' />
@@ -168,7 +173,7 @@ export default function Invoice() {
     )
   } else {
     return (
-      <BaseLayout>
+      <BaseLayout title='Erreur ..'>
         <div className='lg:max-w-[730px] w-full max-lg:px-5 mx-auto mt-10 flex flex-1 flex-col max-sm:pb-20'>
           <div className='flex items-center gap-2 text-xs font-bold dark:text-white'>
             <ArrowLeft />

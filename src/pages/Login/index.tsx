@@ -4,6 +4,7 @@ import { api } from '../../utils/var'
 import { useEffect, useContext, useCallback } from 'react'
 import { getMyInfo } from '../../utils'
 import { UserCtx } from '../../context/UserCtx'
+import { Helmet } from 'react-helmet-async'
 
 export default function Login() {
   const location = useLocation()
@@ -34,6 +35,9 @@ export default function Login() {
 
   return (
     <div className='flex flex-col h-screen items-center justify-center'>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <a
         href={api + '/user/auth/google'}
         target={'_parent'}
