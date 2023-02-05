@@ -85,7 +85,7 @@ export default function Home() {
 
   if (!isLoaded) {
     return (
-      <BaseLayout>
+      <BaseLayout title='chargement ...'>
         <div className='flex flex-1 justify-center items-center'>
           <p>Loading...</p>
         </div>
@@ -96,6 +96,7 @@ export default function Home() {
     <BaseLayout
       showOverlay={showAddItem}
       actionOverlay={() => setShowAddItem(false)}
+      title='Accueil'
     >
       <div className='flex flex-col flex-1 lg:max-w-[730px] w-full mx-auto mt-8 lg:mt-16 max-lg:px-5'>
         <InvoiceStatusBar

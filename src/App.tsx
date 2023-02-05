@@ -7,6 +7,7 @@ import Invoice from './pages/invoice'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './pages/Login'
 import { verifyLocalStorage } from './utils'
+import { HelmetProvider } from 'react-helmet-async'
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -72,33 +73,35 @@ function App() {
   if (storageLoaded === false) return <div>Loading...</div>
 
   return (
-    <ThemeCtx.Provider value={defaultThemeCtx}>
-      <UserCtx.Provider value={{ user, setUser }}>
-        <div className='App bg-light-background dark:bg-dark-background'>
-          <Router>
-            <Routes>
-              <Route
-                path='/'
-                element={
-                  <ProtectedRoute>
-                    <Home />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path='invoice/:id'
-                element={
-                  <ProtectedRoute>
-                    <Invoice />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path='/login' element={<Login />} />
-            </Routes>
-          </Router>
-        </div>
-      </UserCtx.Provider>
-    </ThemeCtx.Provider>
+    <HelmetProvider>
+      <ThemeCtx.Provider value={defaultThemeCtx}>
+        <UserCtx.Provider value={{ user, setUser }}>
+          <div className='App bg-light-background dark:bg-dark-background'>
+            <Router>
+              <Routes>
+                <Route
+                  path='/'
+                  element={
+                    <ProtectedRoute>
+                      <Home />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path='invoice/:id'
+                  element={
+                    <ProtectedRoute>
+                      <Invoice />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path='/login' element={<Login />} />
+              </Routes>
+            </Router>
+          </div>
+        </UserCtx.Provider>
+      </ThemeCtx.Provider>
+    </HelmetProvider>
   )
 }
 

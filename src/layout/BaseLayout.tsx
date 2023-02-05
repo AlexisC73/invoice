@@ -1,15 +1,18 @@
 import { Header } from '../components'
+import { Helmet } from 'react-helmet-async'
 
 export default function BaseLayout({
   children,
   lockedToScreenSize,
   actionOverlay,
   showOverlay,
+  title,
 }: {
   children: React.ReactNode
   lockedToScreenSize?: boolean
   actionOverlay?: () => void
   showOverlay?: boolean
+  title: string
 }) {
   const finalClassName = `flex flex-col flex-1 lg:flex-row ${
     lockedToScreenSize ? 'max-h-screen overflow-hidden' : ''
@@ -17,6 +20,9 @@ export default function BaseLayout({
 
   return (
     <div className={finalClassName}>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       {showOverlay && (
         <div
           onClick={actionOverlay}
