@@ -15,7 +15,7 @@ export const emptyInvoice = {
   dueDate: new Date(Date.now()).toISOString(),
   owner: '',
   id: '',
-  items: [],
+  products: [],
   sender: {
     city: '',
     country: '',

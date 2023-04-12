@@ -13,7 +13,7 @@ export default function ItemList({
     setInvoice((prev) => ({
       ...prev,
       items: [
-        ...prev.items,
+        ...prev.products,
         {
           id: uuid(),
           ...emptyItem,
@@ -25,7 +25,7 @@ export default function ItemList({
   const handleDeleteItem = (id: string) => {
     setInvoice((prev) => ({
       ...prev,
-      items: prev.items.filter((item) => item.id !== id),
+      items: prev.products.filter((product) => product.id !== id),
     }))
   }
 
@@ -35,14 +35,14 @@ export default function ItemList({
     index: string
   ) => {
     setInvoice((prev) => {
-      const newItems = [...prev.items].map((item) => {
-        if (item.id === id) {
+      const newItems = [...prev.products].map((product) => {
+        if (product.id === id) {
           return {
-            ...item,
+            ...product,
             [index]: e.target.value,
           }
         }
-        return item
+        return product
       })
       return {
         ...prev,
@@ -56,7 +56,7 @@ export default function ItemList({
 
       <ItemsTable
         handleUpdateItemList={handleUpdateItemList}
-        items={invoice.items}
+        items={invoice.products}
         handleDeleteItem={handleDeleteItem}
       />
 

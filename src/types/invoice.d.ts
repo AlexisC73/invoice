@@ -12,7 +12,7 @@ type Invoice = {
     name: string
     address: Adress
   }
-  items: Product[]
+  products: Product[]
 }
 
 type Adress = {

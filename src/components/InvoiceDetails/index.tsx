@@ -60,26 +60,26 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
           </p>
         </div>
       </div>
-      {invoice.items.length > 0 && (
+      {invoice.products.length > 0 && (
         <div
           id='facture'
           className='w-full bg-[#F9FAFE] dark:bg-[#252945] rounded-lg overflow-hidden mt-10'
         >
           <div className='px-2 pb-4'>
             <div className='sm:hidden p-4 flex flex-col gap-4'>
-              {invoice.items.map((item) => (
+              {invoice.products.map((product) => (
                 <div
-                  key={item.id}
+                  key={product.id}
                   className='flex items-center justify-between'
                 >
                   <div>
-                    <p className='font-bold dark:text-white'>{item.name}</p>
+                    <p className='font-bold dark:text-white'>{product.name}</p>
                     <p className='text-[#7E88C3] font-bold dark:text-[#888EB0]'>
-                      {item.quantity} x{' '}
+                      {product.quantity} x{' '}
                       {new Intl.NumberFormat('en-EN', {
                         style: 'currency',
                         currency: invoice.currency,
-                      }).format(parseFloat(item.unitPrice))}
+                      }).format(parseFloat(product.unitPrice))}
                     </p>
                   </div>
                   <div>
@@ -88,7 +88,8 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
                         style: 'currency',
                         currency: invoice.currency,
                       }).format(
-                        parseFloat(item.unitPrice) * parseFloat(item.quantity)
+                        parseFloat(product.unitPrice) *
+                          parseFloat(product.quantity)
                       )}
                     </p>
                   </div>
@@ -109,24 +110,27 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
                 </tr>
               </thead>
               <tbody>
-                {invoice.items.map((item) => (
-                  <tr key={item.id} className='h-16'>
-                    <td className='font-bold dark:text-white'>{item.name}</td>
+                {invoice.products.map((product) => (
+                  <tr key={product.id} className='h-16'>
+                    <td className='font-bold dark:text-white'>
+                      {product.name}
+                    </td>
                     <td className='text-center font-bold text-[#7E88C3] dark:text-[#DFE3FA]'>
-                      {item.quantity}
+                      {product.quantity}
                     </td>
                     <td className='text-right font-bold text-[#7E88C3] dark:text-[#DFE3FA]'>
                       {new Intl.NumberFormat('en-EN', {
                         style: 'currency',
                         currency: invoice.currency,
-                      }).format(parseFloat(item.unitPrice))}
+                      }).format(parseFloat(product.unitPrice))}
                     </td>
                     <td className='text-right font-bold text-black dark:text-white'>
                       {new Intl.NumberFormat('en-EN', {
                         style: 'currency',
                         currency: invoice.currency,
                       }).format(
-                        parseFloat(item.unitPrice) * parseFloat(item.quantity)
+                        parseFloat(product.unitPrice) *
+                          parseFloat(product.quantity)
                       )}
                     </td>
                   </tr>
@@ -147,7 +151,7 @@ export default function InvoiceDetails({ invoice }: { invoice: Invoice }) {
               {new Intl.NumberFormat('en-EN', {
                 style: 'currency',
                 currency: invoice.currency,
-              }).format(calculateBasketTotal(invoice.items))}
+              }).format(calculateBasketTotal(invoice.products))}
             </p>
           </div>
         </div>

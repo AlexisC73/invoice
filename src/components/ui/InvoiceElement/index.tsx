@@ -8,7 +8,7 @@ export default function InvoiceElement({ invoice }: { invoice: Invoice }) {
   const amount = new Intl.NumberFormat('en-EN', {
     style: 'currency',
     currency: invoice.currency,
-  }).format(calculateBasketTotal(invoice.items))
+  }).format(calculateBasketTotal(invoice.products))
 
   return (
     <Link to={'/invoice/' + invoice.id}>
