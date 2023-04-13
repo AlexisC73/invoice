@@ -12,7 +12,7 @@ export default function ItemList({
   const handleAddNewItem = () => {
     setInvoice((prev) => ({
       ...prev,
-      items: [
+      products: [
         ...prev.products,
         {
           id: uuid(),
@@ -25,7 +25,7 @@ export default function ItemList({
   const handleDeleteItem = (id: string) => {
     setInvoice((prev) => ({
       ...prev,
-      items: prev.products.filter((product) => product.id !== id),
+      products: prev.products.filter((product) => product.id !== id),
     }))
   }
 
@@ -46,7 +46,7 @@ export default function ItemList({
       })
       return {
         ...prev,
-        items: newItems,
+        products: newItems,
       }
     })
   }
