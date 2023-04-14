@@ -18,7 +18,7 @@ export default function Home() {
   const [filteredInvoices, setFilteredInvoices] = useState<Invoice[]>(invoices)
 
   const reloadInvoices = async () => {
-    await fetch(api + '/invoice', {
+    await fetch(api + '/invoice/owned', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
